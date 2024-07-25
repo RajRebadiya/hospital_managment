@@ -15,6 +15,18 @@
             background: #f2f2f2;
         }
 
+        .w-5,
+        .h-5 {
+            width: 15px;
+        }
+
+        .flex,
+        .justify-between,
+        .flex-1,
+        .sm:hidden {
+            display: none;
+        }
+
         .modal-backdrop {
             --bs-backdrop-zindex: 1050;
             --bs-backdrop-bg: none !important;
@@ -495,14 +507,14 @@
         <div class="form_container">
             <div class="title_container">
                 <h2 style="display: inline">Appointment Data</h2>
-                {{-- <form action="{{ route('appointments.search') }}" method="POST">
+                <form action="{{ route('appointments.search') }}" method="get">
                     @csrf
                     <div class="search col-md-12">
                         <input class='col-md-6' type="text" name="name" placeholder="Search by name">
                         <input class='col-md-6' type="date" name="date">
                     </div>
                     <input type="submit" value="Search">
-                </form> --}}
+                </form>
 
 
             </div>
@@ -543,6 +555,7 @@
 
                         </tbody>
                     </table>
+                    {{ $appointments->links() }}
                 </div>
             </div>
         </div>

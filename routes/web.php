@@ -44,5 +44,5 @@ Route::controller(DoctorController::class)->group(function () {
     Route::get('/accept/{id}', 'accept')->name('accept');
     Route::get('/reject/{id}', 'reject')->name('reject');
     // Route::post('/accept/{id}', 'storeFile')->name('appointments.storeFile');
-    Route::post('/search', 'search')->name('appointments.search');
+    Route::get('/search', 'search')->name('appointments.search');
 });

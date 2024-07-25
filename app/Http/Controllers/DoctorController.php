@@ -13,8 +13,9 @@ class DoctorController extends Controller
     public function doctor(Request $request)
     {
         $doctor = Doctor::where('email', request()->session()->get('doctor_email'))->first();
+        // $doctor = Doctor::Peginate(3);
         // dd($doctor->id);
-        $appointments = Appointment::where('doctor_id', $doctor->id)->where('status', 'pending')->get();
+        $appointments = Appointment::where('doctor_id', $doctor->id)->where('status', 'pending')->paginate(3);
         return view('doctor', compact('appointments'));
     }
     public function accept($id)
@@ -34,7 +35,7 @@ class DoctorController extends Controller
     }
     public function search(Request $request)
     {
-
+        // dd($request->all());
         $doctorEmail = $request->session()->get('doctor_email');
         $doctor = Doctor::where('email', $doctorEmail)->first();
 
@@ -58,7 +59,7 @@ class DoctorController extends Controller
 
 
 
-        $appointments = $query->get();
+        $appointments = $query->paginate(3);
         // dd($appointments);
 
         return view('doctor', compact('appointments'));
